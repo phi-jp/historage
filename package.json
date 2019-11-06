@@ -1,0 +1,25 @@
+{
+  "name": "historage",
+  "version": "0.0.1",
+  "description": "localStorage を使いやすくしたやつ",
+  "main": "index.js",
+  "scripts": {
+    "dev": "parcel index.js --target browser --out-dir ./ --out-file historage.js --no-cache",
+    "build": "parcel build index.js --target browser --out-dir ./ --out-file historage.js --no-cache",
+    "watch": "parcel watch index.js --target browser --out-dir ./ --out-file historage.js --no-cache",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/phi-jp/historage.git"
+  },
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/phi-jp/historage/issues"
+  },
+  "homepage": "https://github.com/phi-jp/historage#readme",
+  "dependencies": {
+    "parcel-bundler": "^1.12.4"
+  }
+}
