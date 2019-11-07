@@ -14,7 +14,11 @@
   var historage = new Historage({
     id: 'historage-test',
   });
-  
+  var textData = historage.get('textData');
+
+  textData.on('saved', (e) => {
+  });
+
   window.onload = () => {
     this.load();
 
@@ -23,13 +27,13 @@
   };
 
   var load = () => {
-    window.a.value = historage.get('a');
-    window.b.value = historage.get('b');
+    window.a.value = textData.data.a || '';
+    window.b.value = textData.data.b || '';
   };
 
   var save = (e) => {
     var elm = e.currentTarget;
-
-    historage.set(elm.id, elm.value);
+    textData.data[elm.id] = elm.value;
+    textData.save();
   };
 </script>

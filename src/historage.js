@@ -1,40 +1,59 @@
 /*
  *
  */
+var EventEmitter = require("events").EventEmitter;
 
-export default class Historage {
+export default class Historage extends EventEmitter {
   constructor({id}) {
+    super();
+
     this.id = id;
 
     this._data = {};
   }
 
   get(key) {
-    var new_key = this.getKey(key);
-    if (!this._data[new_key]) {
-      var item = localStorage.getItem(new_key);
-      this._data[new_key] = item ? JSON.parse(item) : null;
+    if (!this._data[key]) {
+      this._data[key] = new HistorageData({id: this.id, key:key});
     }
 
-    return this._data[new_key];
-  }
-
-  set(key, value) {
-    var new_key = this.getKey(key);
-    this._data[new_key] = value;
-
-    // ローカルストレージに保存
-    var value_str = JSON.stringify(value);
-    var item = localStorage.setItem(new_key, value_str);
-  }
-
-  sync(key) {
-    var new_key = this.getKey(key);
-    var value_str = JSON.stringify(value);
-    var item = localStorage.setItem(new_key, value_str);
-  }
-
-  getKey(key) {
-    return this.id + '_' + key;
+    return this._data[key];
   }
 };
+
+export class HistorageData extends EventEmitter {
+  /*
+   * id ... ユニーク性を担保
+   * key ... 固有のキー
+   */
+  constructor({id, key}) {
+    super();
+
+    this.id = id;
+    this.key = key;
+    this.load();
+  }
+
+  load() {
+    var keyName = this.getKeyName();
+    var data_str = localStorage.getItem(keyName);
+    this.data = data_str ? JSON.parse(data_str) : {};
+  }
+
+  save() {
+    var keyName = this.getKeyName();
+    // ローカルストレージに保存
+    var value_str = JSON.stringify(this.data);
+    localStorage.setItem(keyName, value_str);
+
+    this.emit('saved', {
+      target: this,
+    });
+
+    return this;
+  }
+
+  getKeyName() {
+    return this.id + '.' + this.key;
+  }
+}
