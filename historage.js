@@ -117,7 +117,7 @@ parcelRequire = (function (modules, cache, entry, globalName) {
   }
 
   return newRequire;
-})({"wIHY":[function(require,module,exports) {
+})({"node_modules/events/events.js":[function(require,module,exports) {
 // Copyright Joyent, Inc. and other Node contributors.
 //
 // Permission is hereby granted, free of charge, to any person obtaining a
@@ -535,7 +535,7 @@ function unwrapListeners(arr) {
 
   return ret;
 }
-},{}],"L9dk":[function(require,module,exports) {
+},{}],"src/historage.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -660,7 +660,7 @@ function (_EventEmitter2) {
 }(EventEmitter);
 
 exports.HistorageData = HistorageData;
-},{"events":"wIHY"}],"Focm":[function(require,module,exports) {
+},{"events":"node_modules/events/events.js"}],"index.js":[function(require,module,exports) {
 module.exports = require('./src/historage.js').default;
-},{"./src/historage.js":"L9dk"}]},{},["Focm"], "Historage")
+},{"./src/historage.js":"src/historage.js"}]},{},["index.js"], "Historage")
 //# sourceMappingURL=/historage.js.map
