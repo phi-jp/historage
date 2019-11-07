@@ -1,7 +1,35 @@
 <script src='../historage.js'></script>
 
-<script>
-  var historage = new Historage({});
+<label>
+  A: <br />
+  <textarea id='a'></textarea>
+</label>
+<br />
+<label>
+  B:  <br />
+  <textarea id='b'></textarea>
+</label>
 
-  historage.log();
+<script>
+  var historage = new Historage({
+    id: 'historage-test',
+  });
+  
+  window.onload = () => {
+    this.load();
+
+    window.a.onblur = save;
+    window.b.onblur = save;
+  };
+
+  var load = () => {
+    window.a.value = historage.get('a');
+    window.b.value = historage.get('b');
+  };
+
+  var save = (e) => {
+    var elm = e.currentTarget;
+
+    historage.set(elm.id, elm.value);
+  };
 </script>

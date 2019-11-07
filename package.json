@@ -4,8 +4,8 @@
   "description": "localStorage を使いやすくしたやつ",
   "main": "index.js",
   "scripts": {
-    "dev": "parcel index.js --target browser --out-dir ./ --out-file historage.js --no-cache",
-    "build": "parcel build index.js --target browser --out-dir ./ --out-file historage.js --no-cache",
+    "dev": "parcel index.js --target browser --out-dir ./ --out-file historage.js --no-cache --global Historage",
+    "build": "parcel build index.js --target browser --out-dir ./ --out-file historage.js --no-cache --no-minify --global Historage",
     "watch": "parcel watch index.js --target browser --out-dir ./ --out-file historage.js --no-cache",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
