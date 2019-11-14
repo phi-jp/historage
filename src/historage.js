@@ -1,9 +1,9 @@
 /*
  *
  */
-var EventEmitter = require("events").EventEmitter;
+var AsyncEmitter = require("./asyncemitter");
 
-export default class Historage extends EventEmitter {
+export default class Historage extends AsyncEmitter {
   constructor({id}) {
     super();
 
@@ -21,7 +21,7 @@ export default class Historage extends EventEmitter {
   }
 };
 
-export class HistorageData extends EventEmitter {
+export class HistorageData extends AsyncEmitter {
   /*
    * id ... ユニーク性を担保
    * key ... 固有のキー
