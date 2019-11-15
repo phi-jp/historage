@@ -5,7 +5,7 @@ var EventEmitter = require("events").EventEmitter;
 
 class AsyncEmitter extends EventEmitter {
   emit(event, ...args) {
-    var promises = this.listeners(event).map(async listener => {
+    var promises = this.listeners(event).map(listener => {
       return listener(...args);
     });
 
@@ -16,7 +16,7 @@ class AsyncEmitter extends EventEmitter {
 module.exports = AsyncEmitter;
 
 // // test
-// 
+
 // ;(async () => {
 //   var emitter = new AsyncEmitter();
 
@@ -30,6 +30,10 @@ module.exports = AsyncEmitter;
 //         resolve('async clicked');
 //       }, 1000);
 //     });
+//   });
+
+//   emitter.on('click', () => {
+//     return 'clicked';
 //   });
   
 //   var results = await emitter.emit('click');
