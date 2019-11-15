@@ -3,7 +3,7 @@
  */
 var AsyncEmitter = require("./asyncemitter");
 
-export default class Historage extends AsyncEmitter {
+class Historage extends AsyncEmitter {
   constructor({id}) {
     super();
 
@@ -57,3 +57,5 @@ export class HistorageData extends AsyncEmitter {
     return this.id + '.' + this.key;
   }
 }
+
+module.exports = Historage;
