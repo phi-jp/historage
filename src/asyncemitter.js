@@ -6,11 +6,9 @@ var EventEmitter = require("events").EventEmitter;
 
 class AsyncEmitter extends EventEmitter {
   emit(event, ...args) {
-    var results = this.listeners(event).map(async listener => {
+    var promises = this.listeners(event).map(async listener => {
       return listener(...args);
     });
-
-    var promises = results.filter(r => r && r.constructor === Promise);
 
     return Promise.all(promises);
   }
