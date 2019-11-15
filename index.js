@@ -1,1 +1,1 @@
-module.exports = require('./src/historage.js').default;
+module.exports = require('./src/historage.js');
