@@ -1,6 +1,5 @@
 
 
-require('regenerator-runtime/runtime');
 
 var EventEmitter = require("events").EventEmitter;
 
@@ -17,6 +16,8 @@ class AsyncEmitter extends EventEmitter {
 module.exports = AsyncEmitter;
 
 // // test
+// 
+// require('regenerator-runtime/runtime');
 // ;(async () => {
 //   var emitter = new AsyncEmitter();
 
